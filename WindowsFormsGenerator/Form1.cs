@@ -18,12 +18,12 @@ namespace WindowsFormsGenerator
             InitializeComponent();
             vs = new List<int>();
         }
-        
-         static public int end=int.MaxValue;
-         static public List<int> vs;
-        static void Method()
+        static public int end=int.MaxValue;
+        static public int start = 2;
+        static public List<int> vs;
+        static void ThreadFunk()
         {
-            for (int i = 2; i <= end; i++)
+            for (int i = start; i <= end; i++)
             {
                 bool b = true;
                 for (int j = 2; j < i; j++)
@@ -35,28 +35,51 @@ namespace WindowsFormsGenerator
                 }
                 if (b) vs.Add(i);
             }
-            
+
         }
-        static ThreadStart Start = new ThreadStart(Method);
+        static ThreadStart Start = new ThreadStart(ThreadFunk);
         Thread thread = new Thread(Start );
         private void btnStart_Click(object sender, EventArgs e)
-        {
-            thread.Start();
-            foreach(var item in vs)
+        {if (txtMax.Text.Length != 0)
+            { end = Convert.ToInt32(txtMax.Text); }
+            if (txtMin.Text.Length != 0)
+            { start = Convert.ToInt32(txtMin.Text); }
+            listBoxNum.Items.Clear();
+            try
+            {
+                thread.Start();
+            Thread.Sleep(1000);
+            foreach (var item in vs)
             {
               listBoxNum.Items.Add(item);
+            }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             
         }
 
+        [Obsolete]
         private void btnStop_Click(object sender, EventArgs e)
         {
-            thread.Abort();
+            
         }
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            listBoxNum.Items.ToString();
+            listBoxNum.Items.Clear();
+        }
+
+        private void txtMin_TextChanged(object sender, EventArgs e)
+        {
+            start = Convert.ToInt32(txtMin.Text);
+        }
+
+        private void txtMax_TextChanged(object sender, EventArgs e)
+        {
+            end = Convert.ToInt32(txtMax.Text);
         }
     }
 }

@@ -74,6 +74,8 @@ namespace WindowsFormsGenerator
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(100, 20);
             this.txtMin.TabIndex = 3;
+            this.txtMin.Text = "2";
+            this.txtMin.TextChanged += new System.EventHandler(this.txtMin_TextChanged);
             // 
             // txtMax
             // 
@@ -81,6 +83,7 @@ namespace WindowsFormsGenerator
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(100, 20);
             this.txtMax.TabIndex = 4;
+            this.txtMax.TextChanged += new System.EventHandler(this.txtMax_TextChanged);
             // 
             // listBoxNum
             // 
@@ -115,7 +118,7 @@ namespace WindowsFormsGenerator
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(75, 23);
             this.btnShow.TabIndex = 8;
-            this.btnShow.Text = "Показать";
+            this.btnShow.Text = "Очистить";
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
@@ -145,12 +148,12 @@ namespace WindowsFormsGenerator
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMin;
         private System.Windows.Forms.TextBox txtMax;
         private System.Windows.Forms.ListBox listBoxNum;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnShow;
+        private System.Windows.Forms.TextBox txtMin;
     }
 }
 
