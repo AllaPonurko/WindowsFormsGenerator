@@ -18,8 +18,8 @@ namespace WindowsFormsGenerator
             InitializeComponent();
             vs = new List<int>();
         }
-        static public int end=int.MaxValue;
-        static public int start = 2;
+        static public int end;
+        static public int start;
         static public List<int> vs;
         static void ThreadFunk()
         {
@@ -42,26 +42,35 @@ namespace WindowsFormsGenerator
         private void btnStart_Click(object sender, EventArgs e)
         {if (txtMax.Text.Length != 0)
             { end = Convert.ToInt32(txtMax.Text); }
+        if(txtMax.Text.Length== 0)
+            {
+                end = int.MaxValue;
+            }
             if (txtMin.Text.Length != 0)
             { start = Convert.ToInt32(txtMin.Text); }
+            if(txtMin.Text.Length == 0)
+            {
+                start = 2;
+            }
             listBoxNum.Items.Clear();
             try
             {
                 thread.Start();
-            Thread.Sleep(1000);
-            foreach (var item in vs)
-            {
-              listBoxNum.Items.Add(item);
+                Thread.Sleep(1000);
+                foreach (var item in vs)
+                {
+                    listBoxNum.Items.Add(item);
+                }
+                thread.Abort();
             }
-
-            }catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             
         }
 
-        [Obsolete]
+        
         private void btnStop_Click(object sender, EventArgs e)
         {
             
@@ -70,16 +79,9 @@ namespace WindowsFormsGenerator
         private void btnShow_Click(object sender, EventArgs e)
         {
             listBoxNum.Items.Clear();
+            
         }
 
-        private void txtMin_TextChanged(object sender, EventArgs e)
-        {
-            start = Convert.ToInt32(txtMin.Text);
-        }
-
-        private void txtMax_TextChanged(object sender, EventArgs e)
-        {
-            end = Convert.ToInt32(txtMax.Text);
-        }
+        
     }
 }

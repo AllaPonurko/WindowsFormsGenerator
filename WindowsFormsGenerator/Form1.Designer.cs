@@ -74,8 +74,6 @@ namespace WindowsFormsGenerator
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(100, 20);
             this.txtMin.TabIndex = 3;
-            this.txtMin.Text = "2";
-            this.txtMin.TextChanged += new System.EventHandler(this.txtMin_TextChanged);
             // 
             // txtMax
             // 
@@ -83,7 +81,6 @@ namespace WindowsFormsGenerator
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(100, 20);
             this.txtMax.TabIndex = 4;
-            this.txtMax.TextChanged += new System.EventHandler(this.txtMax_TextChanged);
             // 
             // listBoxNum
             // 
