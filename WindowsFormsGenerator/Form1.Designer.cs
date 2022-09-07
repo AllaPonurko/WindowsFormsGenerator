@@ -39,6 +39,9 @@ namespace WindowsFormsGenerator
             this.btnStop = new System.Windows.Forms.Button();
             this.btnShow = new System.Windows.Forms.Button();
             this.btnFib = new System.Windows.Forms.Button();
+            this.listBoxThreads = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnShowThreads = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
@@ -130,11 +133,41 @@ namespace WindowsFormsGenerator
             this.btnFib.UseVisualStyleBackColor = true;
             this.btnFib.Click += new System.EventHandler(this.btnFib_Click);
             // 
+            // listBoxThreads
+            // 
+            this.listBoxThreads.FormattingEnabled = true;
+            this.listBoxThreads.Location = new System.Drawing.Point(35, 258);
+            this.listBoxThreads.Name = "listBoxThreads";
+            this.listBoxThreads.Size = new System.Drawing.Size(249, 95);
+            this.listBoxThreads.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 222);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Состояние потоков";
+            // 
+            // btnShowThreads
+            // 
+            this.btnShowThreads.Location = new System.Drawing.Point(35, 368);
+            this.btnShowThreads.Name = "btnShowThreads";
+            this.btnShowThreads.Size = new System.Drawing.Size(75, 23);
+            this.btnShowThreads.TabIndex = 12;
+            this.btnShowThreads.Text = "Показать";
+            this.btnShowThreads.UseVisualStyleBackColor = true;
+            this.btnShowThreads.Click += new System.EventHandler(this.btnShowThreads_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnShowThreads);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listBoxThreads);
             this.Controls.Add(this.btnFib);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnStop);
@@ -164,6 +197,9 @@ namespace WindowsFormsGenerator
         private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.TextBox txtMin;
         private System.Windows.Forms.Button btnFib;
+        private System.Windows.Forms.ListBox listBoxThreads;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnShowThreads;
     }
 }
 

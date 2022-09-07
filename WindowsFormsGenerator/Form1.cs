@@ -17,10 +17,12 @@ namespace WindowsFormsGenerator
         {
             InitializeComponent();
             vs = new List<int>();
+            Threads = new List<Thread>();
         }
         static public int end;
         static public int start;
         static public List<int> vs;
+        public List<Thread> Threads;
         static void ThreadFunk()
         {
             vs.Clear();
@@ -70,6 +72,7 @@ namespace WindowsFormsGenerator
             try
             {Thread thread = new Thread(Start );
                 thread.Start();
+                Threads.Add(thread);
                 Thread.Sleep(1000);
                 foreach (var item in vs)
                 {
@@ -88,13 +91,21 @@ namespace WindowsFormsGenerator
         
         private void btnStop_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+              Thread.CurrentThread.Interrupt();
+               
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btnShow_Click(object sender, EventArgs e)
         {
             listBoxNum.Items.Clear();
-            
+
         }
 
         private void btnFib_Click(object sender, EventArgs e)
@@ -118,6 +129,7 @@ namespace WindowsFormsGenerator
             {
                 Thread thread = new Thread(Start1);
                 thread.Start();
+                Threads.Add(thread);
                 Thread.Sleep(1000);
                 foreach (var item in vs)
                 {
@@ -132,6 +144,15 @@ namespace WindowsFormsGenerator
             }
 
 
+        }
+
+        private void btnShowThreads_Click(object sender, EventArgs e)
+        {
+            listBoxThreads.Items.Clear();
+            foreach (var item in Threads)
+            {
+                listBoxThreads.Items.Add(item.ManagedThreadId.ToString() + " " + item.ThreadState);
+            }
         }
     }
 }
