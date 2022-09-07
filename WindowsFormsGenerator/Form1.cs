@@ -23,6 +23,7 @@ namespace WindowsFormsGenerator
         static public List<int> vs;
         static void ThreadFunk()
         {
+            vs.Clear();
             for (int i = start; i <= end; i++)
             {
                 bool b = true;
@@ -38,30 +39,35 @@ namespace WindowsFormsGenerator
 
         }
         static ThreadStart Start = new ThreadStart(ThreadFunk);
-        Thread thread = new Thread(Start );
+        
         private void btnStart_Click(object sender, EventArgs e)
-        {if (txtMax.Text.Length != 0)
-            { end = Convert.ToInt32(txtMax.Text); }
-        if(txtMax.Text.Length== 0)
-            {
-                end = int.MaxValue;
-            }
+        {
             if (txtMin.Text.Length != 0)
             { start = Convert.ToInt32(txtMin.Text); }
             if(txtMin.Text.Length == 0)
             {
                 start = 2;
             }
-            listBoxNum.Items.Clear();
-            try
+            if (txtMax.Text.Length != 0)
+            { 
+                end = Convert.ToInt32(txtMax.Text);
+            }
+            if(txtMax.Text.Length== 0)
             {
+                end = int.MaxValue;
+            } 
+            listBoxNum.Items.Clear();    
+            try
+            {Thread thread = new Thread(Start );
                 thread.Start();
                 Thread.Sleep(1000);
                 foreach (var item in vs)
                 {
                     listBoxNum.Items.Add(item);
                 }
+                MessageBox.Show("Текущий поток " + thread.ManagedThreadId.ToString() + " в состоянии " + thread.ThreadState);
                 thread.Abort();
+                
             }
             catch (Exception ex)
             {
@@ -73,7 +79,7 @@ namespace WindowsFormsGenerator
         
         private void btnStop_Click(object sender, EventArgs e)
         {
-            
+           
         }
 
         private void btnShow_Click(object sender, EventArgs e)
