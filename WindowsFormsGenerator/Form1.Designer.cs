@@ -38,15 +38,16 @@ namespace WindowsFormsGenerator
             this.label3 = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnShow = new System.Windows.Forms.Button();
+            this.btnFib = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(337, 45);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(93, 51);
             this.btnStart.TabIndex = 0;
-            this.btnStart.Text = "Старт";
+            this.btnStart.Text = "Генерация простых чисел";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -85,23 +86,23 @@ namespace WindowsFormsGenerator
             // listBoxNum
             // 
             this.listBoxNum.FormattingEnabled = true;
-            this.listBoxNum.Location = new System.Drawing.Point(549, 100);
+            this.listBoxNum.Location = new System.Drawing.Point(593, 90);
             this.listBoxNum.Name = "listBoxNum";
-            this.listBoxNum.Size = new System.Drawing.Size(120, 95);
+            this.listBoxNum.Size = new System.Drawing.Size(120, 264);
             this.listBoxNum.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(546, 50);
+            this.label3.Location = new System.Drawing.Point(590, 45);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 13);
+            this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Список простых чисел";
+            this.label3.Text = "Список  чисел";
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(337, 92);
+            this.btnStop.Location = new System.Drawing.Point(337, 118);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 7;
@@ -111,7 +112,7 @@ namespace WindowsFormsGenerator
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(549, 215);
+            this.btnShow.Location = new System.Drawing.Point(593, 368);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(75, 23);
             this.btnShow.TabIndex = 8;
@@ -119,11 +120,22 @@ namespace WindowsFormsGenerator
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
+            // btnFib
+            // 
+            this.btnFib.Location = new System.Drawing.Point(446, 45);
+            this.btnFib.Name = "btnFib";
+            this.btnFib.Size = new System.Drawing.Size(94, 51);
+            this.btnFib.TabIndex = 9;
+            this.btnFib.Text = "Генерация чисел Фибоначчи";
+            this.btnFib.UseVisualStyleBackColor = true;
+            this.btnFib.Click += new System.EventHandler(this.btnFib_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnFib);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.label3);
@@ -134,7 +146,7 @@ namespace WindowsFormsGenerator
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
-            this.Text = "Генерация простых чисел";
+            this.Text = "Генерация чисел";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +163,7 @@ namespace WindowsFormsGenerator
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.TextBox txtMin;
+        private System.Windows.Forms.Button btnFib;
     }
 }
 

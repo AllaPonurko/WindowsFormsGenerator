@@ -38,8 +38,18 @@ namespace WindowsFormsGenerator
             }
 
         }
+        static void Fibonachi()
+        {
+            vs.Clear();
+            int j = 1;
+            for (int i = 1; i <= end; i += j)
+            {
+                j = i - j;
+                vs.Add(i);
+            }
+        }
         static ThreadStart Start = new ThreadStart(ThreadFunk);
-        
+        static ThreadStart Start1 = new ThreadStart(Fibonachi);
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (txtMin.Text.Length != 0)
@@ -67,7 +77,6 @@ namespace WindowsFormsGenerator
                 }
                 MessageBox.Show("Текущий поток " + thread.ManagedThreadId.ToString() + " в состоянии " + thread.ThreadState);
 
-                
             }
             catch (Exception ex)
             {
@@ -88,6 +97,41 @@ namespace WindowsFormsGenerator
             
         }
 
-        
+        private void btnFib_Click(object sender, EventArgs e)
+        {
+            if (txtMin.Text.Length != 0)
+            { start = Convert.ToInt32(txtMin.Text); }
+            if (txtMin.Text.Length == 0)
+            {
+                start = 1;
+            }
+            if (txtMax.Text.Length != 0)
+            {
+                end = Convert.ToInt32(txtMax.Text);
+            }
+            if (txtMax.Text.Length == 0)
+            {
+                end = int.MaxValue;
+            }
+            listBoxNum.Items.Clear();
+            try
+            {
+                Thread thread = new Thread(Start1);
+                thread.Start();
+                Thread.Sleep(1000);
+                foreach (var item in vs)
+                {
+                    listBoxNum.Items.Add(item);
+                }
+                MessageBox.Show("Текущий поток " + thread.ManagedThreadId.ToString() + " в состоянии " + thread.ThreadState);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
     }
 }
