@@ -66,7 +66,7 @@ namespace WindowsFormsGenerator
                     listBoxNum.Items.Add(item);
                 }
                 MessageBox.Show("Текущий поток " + thread.ManagedThreadId.ToString() + " в состоянии " + thread.ThreadState);
-                thread.Abort();
+
                 
             }
             catch (Exception ex)
